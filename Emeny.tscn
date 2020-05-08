@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Emeny.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0.376471, 0.772549, 1 )
+
+[sub_resource type="CapsuleMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="CapsuleShape" id=3]
+
+[node name="Enemy" type="KinematicBody" groups=[
+"Enemy",
+]]
+transform = Transform( 0.494428, 0, -0.0744398, 0, 0.5, 0, 0.0744398, 0, 0.494428, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.0281386, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -5.96046e-08 )
+shape = SubResource( 3 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 0.030207, 0, -0.999544, 0, 1, 0, 0.999544, 0, 0.030207, 0, 0, 1.33941 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+polygon = PoolVector2Array( 0, 0, 15, 6, 15, -6 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
