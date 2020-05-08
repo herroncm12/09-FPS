@@ -1,1 +1,1 @@
-I created a fps game where the player holds a gun and the enemy tracks you.
+This game you must collect all the coins without the enemy killing you. You can shoot the enemies with the left click.
